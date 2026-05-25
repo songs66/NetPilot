@@ -28,7 +28,7 @@
     </font>
    </property>
    <property name="title">
-    <string>服务器消息列表</string>
+    <string>TCP服务器消息列表</string>
    </property>
    <widget class="QListWidget" name="listWidget_TCPServerListMsg">
     <property name="geometry">

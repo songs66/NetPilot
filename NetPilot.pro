@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    errorhandler.cpp \
     formtcpclient.cpp \
     formtcpserver.cpp \
     formudpclient.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     widget.cpp
 
 HEADERS += \
+    errorhandler.h \
     formtcpclient.h \
     formtcpserver.h \
     formudpclient.h \
@@ -37,3 +39,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     images.qrc
+
+DISTFILES += \
+    README.md

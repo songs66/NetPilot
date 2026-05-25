@@ -281,7 +281,7 @@
     </font>
    </property>
    <property name="title">
-    <string>客户端消息列表</string>
+    <string>TCP客户端消息列表</string>
    </property>
    <widget class="QPlainTextEdit" name="plainTextEdit_TCPClientMsg">
     <property name="geometry">
