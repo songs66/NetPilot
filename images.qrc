@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>image/clientlogo2.ico</file>
+        <file>image/connect.ico</file>
+        <file>image/disconnect.ico</file>
+        <file>image/exit.ico</file>
+        <file>image/NetPilotLogo.ico</file>
+        <file>image/dataconvert.ico</file>
+        <file>image/sendmsg.ico</file>
+        <file>image/sendmsg2.ico</file>
+        <file>image/serverlisten.ico</file>
+        <file>image/serverlogo2.ico</file>
+        <file>image/start.ico</file>
+        <file>image/stop.ico</file>
+        <file>image/tcpserver.ico</file>
+        <file>image/tcpclient.ico</file>
+        <file>image/udpclient.ico</file>
+        <file>image/udpserver.ico</file>
+    </qresource>
+</RCC>
