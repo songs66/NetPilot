@@ -232,31 +232,46 @@ void ErrorHandler::reopenForToday_unlocked()
     setLogFile(newPath);            // 打开新日期文件
 }
 
+// 功能：开启/关闭日志写盘
+void ErrorHandler::setLoggingEnabled(bool enabled)
+{
+    loggingEnabled = enabled; // 简单开关，未持锁因bool原子读写即可
+}
 
+// 功能：初始化，切换当前日志，创建目录与文件
+void ErrorHandler::initializeLogFile()
+{
+    // 日志目录：使用AppDataLocation的父目录，与QSettings配置文件在同一目录
+    // 如果组织名称为"NDATools"，应用名称为"NDATools"
+    // AppDataLocation = %APPDATA%\NDATools\NDATools
+    // 使用父目录 = %APPDATA%\NDATools，与INI文件在同一目录
+    QString appDataPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+    QDir appDataDir(appDataPath);
+    QString logDir = appDataPath;
 
+    // 如果路径以应用名称结尾（如 ...\NDATools\NDATools），则使用父目录
+    // 这样日志文件和INI配置文件都在 %APPDATA%\NDATools 目录下
+    QString appName = QApplication::applicationName();
+    if (!appName.isEmpty() && (appDataPath.endsWith("/" + appName) ||
+                               appDataPath.endsWith("\\" + appName))) {
+        QDir parentDir = appDataDir;
+        if (parentDir.cdUp()) {  // 进入父目录
+            logDir = parentDir.absolutePath();
+        }
+    }
 
+    QDir().mkpath(logDir);         // 确保目录存在
 
+    qDebug() << "日志文件目录:" << logDir;
+    // 日志文件名：按日期分片，比如：NDATools_20260101.log
+    QString logFileName = QString("%1/NDATools_%2.log")
+                              .arg(logDir, QDate::currentDate().toString("yyyyMMdd"));
 
+    setLogFile(logFileName);            // 打开/切换日志文件
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // 写入启动标记，便于分隔进程启动
+    if (logStream) {
+        writeToLog("=== NDATools 启动 ===");
+    }
+}
 
