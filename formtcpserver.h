@@ -72,6 +72,9 @@ public:
     // 功能：检验 IP 字符串是否合法
     bool CheckIPAddrIsValid(QString strIpAddress);
 
+    // 功能：检验 IP 字符串是否合法
+    bool CheckIPAddrIsVaild(QString strIpAddress);
+
     // 功能：将列表控件内部保存到文件（追加或覆盖由实现决定）
     void saveListWidgetToFile(QListWidget* listWidget);
 

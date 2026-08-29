@@ -1,8 +1,10 @@
-QT       += core gui
+QT += core gui
 
 # 网络模块：提供TCP/UDP套接字功能
 QT += network
 
+# NDATools中后续补充的数据处理与公共模块
+QT += concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,7 +21,13 @@ SOURCES += \
     formudpclient.cpp \
     formudpserver.cpp \
     main.cpp \
-    widget.cpp
+    widget.cpp \
+    dataconverter.cpp \
+    formchilddataconversion.cpp \
+    formchilddatavalidation.cpp \
+    formdataprocessor.cpp \
+    inputvalidator.cpp \
+    network.cpp
 
 HEADERS += \
     errorhandler.h \
@@ -27,14 +35,23 @@ HEADERS += \
     formtcpserver.h \
     formudpclient.h \
     formudpserver.h \
-    widget.h
+    widget.h \
+    dataconverter.h \
+    formchilddataconversion.h \
+    formchilddatavalidation.h \
+    formdataprocessor.h \
+    inputvalidator.h \
+    network.h
 
 FORMS += \
     formtcpclient.ui \
     formtcpserver.ui \
     formudpclient.ui \
     formudpserver.ui \
-    widget.ui
+    widget.ui \
+    formchilddataconversion.ui \
+    formchilddatavalidation.ui \
+    formdataprocessor.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

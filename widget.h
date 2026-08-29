@@ -2,6 +2,9 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QCloseEvent>
+
+#include "formdataprocessor.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +20,12 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+protected:
+    // 窗口关闭事件，保存所有子窗口的日志
+    void closeEvent(QCloseEvent *event) override;
+
 private:
     Ui::Widget *ui;
+    FormDataProcessor *dataProcessor;
 };
 #endif // WIDGET_H
